@@ -276,6 +276,14 @@ Each chapter follows the same **4-step structure**:
 ├── 📓 notebooks/             ← Jupyter notebooks (one per chapter)
 │   ├── 🎨 attention_visualized.ipynb ← Watch attention weights in action
 │   └── ☁️ colab_train.ipynb  ← One-click cloud training on Colab
+├── 🎯 fine-tuning/           ← Fine-tuning guide: LoRA, QLoRA, data prep
+│   ├── 📄 README.md
+│   ├── 01_what_is_finetuning.md
+│   ├── 02_lora_explained.md
+│   ├── 03_qlora_explained.md
+│   ├── 04_data_preparation.md
+│   ├── 05_full_finetune.md
+│   └── 📓 notebooks/lora_finetune.ipynb
 ├── 📚 explanations and examples WIP/ ← Standalone explainers (18 topics)
 └── 📄 CONTRIBUTING.md
 ```
