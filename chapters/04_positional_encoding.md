@@ -222,9 +222,9 @@ class RotaryPositionalEmbedding(nn.Module):
               So executing (x*cos + rotate_half(x)*sin) performs rotation
               on every dimension pair simultaneously — no loop needed!
         """
-        x1 = x[..., : x.shape[-1] // 2]   # First half:  [x0, x2, x4, ...]
-        x2 = x[..., x.shape[-1] // 2 :]   # Second half: [x1, x3, x5, ...]
-        return torch.cat([-x2, x1], dim=-1)  # [-x1, x0, -x3, x2, -x5, x4, ...]
+        x_even = x[..., 0::2]              # First half:  [x0, x2, x4, ...]
+        x_odd  = x[..., 1::2]              # Second half: [x1, x3, x5, ...]
+        return torch.stack((-x_odd, x_even), dim=-1).flatten(-2)  # [-x1, x0, -x3, x2, -x5, x4, ...]
 
     def forward(self, x: torch.Tensor, seq_len: int) -> torch.Tensor:
         """
